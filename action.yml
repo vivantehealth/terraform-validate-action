@@ -10,6 +10,7 @@ runs:
       with:
         terraform_version: 1.0.0
     - name: Terraform fmt
+      shell: bash
       run: |
         set +e
         terraform fmt -check
@@ -19,6 +20,8 @@ runs:
         fi
         set -e
     - name: TF init
+      shell: bash
       run: terraform init -input=false -backend=false
     - name: TF validate
+      shell: bash
       run: terraform validate
