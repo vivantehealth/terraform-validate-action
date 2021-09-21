@@ -7,8 +7,6 @@ runs:
       uses: actions/checkout@master
     - name: Set up Terraform cli
       uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.0.0
     - name: Terraform fmt
       shell: bash
       run: |
