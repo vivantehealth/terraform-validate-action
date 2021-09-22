@@ -34,4 +34,4 @@ runs:
     - name: TF validate
       working-directory: ${{ inputs.tf_working_dir }}
       shell: bash
-      run: terraform validate ${{ inputs.additional_plan_args }}
+      run: terraform validate ${{ inputs.additional_validate_args }}
