@@ -5,6 +5,10 @@ inputs:
     description: Path to directory where terraform commands should be run
     required: false
     default: "./"
+  additional_validate_args:
+    description: Additional arguments to add to the `terraform validate` step. Use this to specify tfvar files, for example
+    required: false
+    default: ""
 runs:
   using: "composite"
   steps:
@@ -30,4 +34,4 @@ runs:
     - name: TF validate
       working-directory: ${{ inputs.tf_working_dir }}
       shell: bash
-      run: terraform validate
+      run: terraform validate ${{ inputs.additional_plan_args }}
