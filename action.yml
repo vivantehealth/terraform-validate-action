@@ -1,5 +1,10 @@
 name: 'Terraform Validate'
 description: "terraform fmt, init, and validate"
+inputs:
+  tf_working_dir:
+    description: Path to directory where terraform commands should be run
+    required: false
+    default: "./"
 runs:
   using: "composite"
   steps:
@@ -8,6 +13,7 @@ runs:
     - name: Set up Terraform cli
       uses: hashicorp/setup-terraform@v1
     - name: Terraform fmt
+      working-directory: ${{ inputs.tf_working_dir }}
       shell: bash
       run: |
         set +e
@@ -18,8 +24,10 @@ runs:
         fi
         set -e
     - name: TF init
+      working-directory: ${{ inputs.tf_working_dir }}
       shell: bash
       run: terraform init -input=false -backend=false
     - name: TF validate
+      working-directory: ${{ inputs.tf_working_dir }}
       shell: bash
       run: terraform validate
