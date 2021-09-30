@@ -12,8 +12,6 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Checkout
-      uses: actions/checkout@master
     - name: Set up Terraform cli
       uses: hashicorp/setup-terraform@v1
     - name: Terraform fmt
