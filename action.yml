@@ -5,10 +5,6 @@ inputs:
     description: Path to directory where terraform commands should be run
     required: false
     default: "./"
-  tfvars_file:
-    description: Terraform variables file path, if any
-    required: false
-    default: ""
 runs:
   using: "composite"
   steps:
@@ -32,4 +28,4 @@ runs:
     - name: TF validate
       working-directory: ${{ inputs.tf_working_dir }}
       shell: bash
-      run: terraform validate ${{ inputs.tfvars_file }}
+      run: terraform validate
